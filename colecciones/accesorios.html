@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesorios | Loto Tigre</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <main-header></main-header>
+
+    <section class="page-title">
+        <h1>Accesorios</h1>
+        <p>Ediciones limitadas y detalles artesanales.</p>
+    </section>
+
+        <!-- NUEVO: Contenedor de Filtros y Ordenamiento -->
+    <div class="catalog-controls">
+        <div class="sort-container">
+            <label for="sort-select">Ordenar por:</label>
+            <select id="sort-select">
+                <option value="default">Recomendados</option>
+                <option value="price-asc">Precio: Menor a Mayor</option>
+                <option value="price-desc">Precio: Mayor a Menor</option>
+                <option value="name-asc">Nombre: A-Z</option>
+                <option value="stock-desc">Disponibilidad</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Aquí se cargarán los accesorios desde la BD -->
+    <div id="grid-accesorios" class="grid-4">
+        <!-- Loader sutil -->
+        <p class="loading">Cargando colección...</p>
+    </div>
+
+    <main-footer></main-footer>
+
+    <product-modal id="main-modal"></product-modal>
+    <script src="../js/components.js"></script>
+    <script src="../js/accesorios.js"></script>
+</body>
+</html>

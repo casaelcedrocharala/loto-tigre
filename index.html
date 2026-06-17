@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loto Tigre | Diseño</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Web Component: Menú -->
+    <main-header></main-header>
+
+    <main>
+        <!-- Sección 1: Full Screen -->
+        <section class="full-screen">
+            <img src="/assets/images/principal.png" alt="Hero Loto Tigre">
+        </section>
+
+        <!-- Sección 2: 1/3 y 2/3 -->
+        <section class="split-row">
+            <div class="col-1-3"><img src="/assets/images/image_800-1200.png" alt="Diseño 1"></div>
+            <div class="col-2-3"><img src="/assets/images/image_1400-1200.png" alt="Diseño 2"></div>
+        </section>
+
+        <!-- Sección 3: 4 Imágenes (Accesorios Dinámicos) -->
+        <section class="grid-4" id="grid-accesorios-home">
+            <p class="loading" style="text-align: center; width: 100%; padding: 40px 0;">Cargando novedades...</p>
+        </section>
+
+        <!-- Sección: Grid 2 (Espejo Estático) -->
+        <section class="grid-2-custom">
+            <!-- Fila 1 -->
+            <div class="row-product">
+                <div class="product-info-card">
+                    <span class="brand">Loto Tigre</span>
+                    <h2>Vestido Seda Floral</h2>
+                    <p class="price-cop">$ 450.000 COP</p>
+                    <p class="mini-desc">Diseño fluido con caída natural, ideal para ocasiones especiales.</p>
+                    <div class="color-selector">
+                        <span class="color-dot" style="background-color: #000;"></span>
+                        <span class="color-dot" style="background-color: #D4AF37;"></span>
+                        <span class="color-dot" style="background-color: #E5E5E5;"></span>
+                    </div>
+                    <button class="btn-view-static" data-title="Vestido Seda Floral" data-price="450.000" data-desc="Diseño fluido con caída natural, ideal para ocasiones especiales.">Ver Producto</button>
+                </div>
+                <div class="product-image">
+                    <img src="/assets/images/image-600-600.png" alt="Vestido Seda Floral">
+                </div>
+            </div>
+
+            <!-- Fila 2 -->
+            <div class="row-product reverse">
+                <div class="product-info-card">
+                    <span class="brand">Loto Tigre</span>
+                    <h2>Top Tigre Velvet</h2>
+                    <p class="price-cop">$ 185.000 COP</p>
+                    <p class="mini-desc">Textura aterciopelada con bordados hechos a mano.</p>
+                    <div class="color-selector">
+                        <span class="color-dot" style="background-color: #556B2F;"></span>
+                        <span class="color-dot" style="background-color: #8B0000;"></span>
+                        <span class="color-dot" style="background-color: #000;"></span>
+                    </div>
+                    <button class="btn-view-static" data-title="Top Tigre Velvet" data-price="185.000" data-desc="Textura aterciopelada con bordados hechos a mano.">Ver Producto</button>
+                </div>
+                <div class="product-image">
+                    <img src="/assets/images/image-600-600.png" alt="Top Tigre Velvet">
+                </div>
+            </div>
+        </section>   
+    </main>
+
+    <!-- Web Component: Pie de página -->
+    <main-footer></main-footer>
+    <product-modal id="main-modal"></product-modal>
+    
+    <!-- SCRIPTS LOCALES -->
+    <script src="js/components.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

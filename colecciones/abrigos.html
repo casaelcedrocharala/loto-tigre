@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abrigos y Chaquetas | Loto Tigre</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>    
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <main-header></main-header>
+
+    <section class="page-title">
+        <h1>Abrigos y Chaquetas</h1>
+        <p>Prendas estructuradas con carácter y cortes editoriales.</p>
+    </section>
+
+    <!-- Controles de Ordenamiento -->
+    <div class="catalog-controls">
+        <div class="sort-container">
+            <label for="sort-select">Ordenar por:</label>
+            <select id="sort-select">
+                <option value="default">Recomendados</option>
+                <option value="price-asc">Precio: Menor a Mayor</option>
+                <option value="price-desc">Precio: Mayor a Menor</option>
+                <option value="name-asc">Nombre: A-Z</option>
+                <option value="stock-desc">Disponibilidad</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Grilla de productos (Reutiliza el estilo .grid-4 unificado) -->
+    <div id="grid-abrigos" class="grid-4">
+        <p class="loading" style="text-align: center; width: 100%; padding: 40px 0;">Cargando colección...</p>
+    </div>
+
+    <main-footer></main-footer>
+
+    <product-modal id="main-modal"></product-modal>
+    
+    <script src="../js/components.js"></script>
+    <script src="../js/abrigos.js"></script>
+</body>
+</html>

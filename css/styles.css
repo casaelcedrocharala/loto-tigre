@@ -1,0 +1,907 @@
+/* ==========================================================================
+   1. ESTILOS GENERALES Y BASE
+   ========================================================================== */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', sans-serif;
+    background-color: #f8f8f8;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene proporción sin deformar */
+    display: block;
+}
+
+/* ==========================================================================
+   2. ESTRUCTURA DEL HEADER (ESCRITORIO)
+   ========================================================================== */
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff; /* Evita transparencias al hacer scroll */
+    z-index: 1000;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+/* Contenedor unificado: Alinea logo, menú desktop y hamburguesa */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%; /* Espaciado lateral premium */
+    height: 80px;      /* Altura fija controlada */
+    box-sizing: border-box;
+}
+
+/* Contenedor e imagen del Logo (Corregido para que no choque con texto) */
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    max-width: 180px;                  
+}
+
+.logo-container a {
+    display: block;
+    height: 100%;
+}
+
+.logo-container img {
+    height: 45px !important;  /* Controla la altura fija en escritorio */
+    width: auto !important;    /* Obliga a mantener la proporción original */
+    display: block;
+}
+
+/* Menú de Escritorio */
+.nav-desktop ul { 
+    display: flex; 
+    list-style: none; 
+    gap: 30px; 
+    margin: 0; 
+    padding: 0;
+}
+
+ /* Titulos y subtitulos */
+.page-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* Centra horizontalmente el título y el subtítulo */
+    text-align: center;      /* Asegura que el texto largo se alinee en el eje central */
+    padding: 80px 20px 40px 20px; /* Genera un respiro elegante arriba y abajo */
+}
+
+.page-title h1 {
+    font-family: 'Helvetica', sans-serif; /* Puedes cambiarla por la tipografía de Loto Tigre */
+    font-weight: 300;
+    font-size: 32px;
+    letter-spacing: 6px;     /* Letras expandidas para dar un look premium de alta costura */
+    text-transform: uppercase;
+    margin: 0 0 15px 0;      /* Margen sutil solo abajo del h1 */
+    color: #000;
+}
+
+.page-title p {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #666;             /* Tono gris sutil para que no compita con el h1 */
+    margin: 0;
+    max-width: 600px;        /* Evita que la descripción se estire demasiado a lo ancho */
+    line-height: 1.6;
+}
+
+
+/* ==========================================================================
+   3. SUBMENÚ HORIZONTAL DESKTOP (COLECCIONES)
+   ========================================================================== */
+.submenu-horizontal {
+    background: #fdfdfd;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    border-bottom: 0px solid #eee;
+}
+
+.submenu-horizontal.active {
+    max-height: 100px;
+    border-bottom: 1px solid #eee;
+}
+
+.submenu-horizontal ul {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+    padding: 25px 0;
+    margin: 0;
+}
+
+/* ==========================================================================
+   4. AYUDA VISUAL: LÍNEAS INTERACTIVAS (ANIMACIONES)
+   ========================================================================== */
+.nav-desktop ul li a, 
+.submenu-horizontal ul li a {
+    position: relative;
+    text-decoration: none;
+    color: #666; /* Gris sutil para inactivos */
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Línea base virtual */
+.nav-desktop ul li a::after,
+.submenu-horizontal ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    background-color: #000;
+    width: 0; 
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-desktop ul li a::after {
+    left: 0; /* Animación de izquierda a derecha */
+}
+
+.submenu-horizontal ul li a::after {
+    left: 50%; /* Animación expandida desde el centro */
+    transform: translateX(-50%);
+}
+
+/* Activación por hover o por clase activa de JS */
+.nav-desktop ul li a:hover::after,
+.nav-desktop ul li a.active::after,
+.submenu-horizontal ul li a:hover::after,
+.submenu-horizontal ul li a.active::after {
+    width: 100%;
+}
+
+.nav-desktop ul li a.active,
+.submenu-horizontal ul li a.active {
+    color: #000;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   5. COMPONENTES DE MENÚ MÓVIL (SISTEMA OCULTO BASE)
+   ========================================================================== */
+.hamburger {
+    display: none; /* Se activa exclusivamente en la media query */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; 
+}
+
+.hamburger span { 
+    width: 22px; 
+    height: 1px; 
+    background: #000; 
+    transition: all 0.3s ease;
+}
+
+.mobile-drawer {
+    position: fixed;
+    top: 0; 
+    left: -100%; /* Resguardado completamente a la izquierda */
+    width: 85%; 
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: 15px 0 30px rgba(0, 0, 0, 0.02); 
+    transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 120px 40px 40px 40px; 
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+.mobile-drawer.active { 
+    left: 0 !important; 
+}
+
+.mobile-nav-links { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
+}
+
+.mobile-nav-links > li { 
+    margin-bottom: 30px; 
+}
+
+.mobile-nav-links a, 
+.mobile-collapse-btn {
+    text-decoration: none; 
+    color: #000; 
+    font-size: 13px; 
+    text-transform: uppercase; 
+    letter-spacing: 2px;
+    font-weight: 300;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.mobile-submenu { 
+    list-style: none; 
+    max-height: 0; 
+    overflow: hidden; 
+    padding-left: 15px;
+    transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mobile-submenu.active { 
+    max-height: 300px; 
+    margin-top: 20px; 
+}
+
+.mobile-submenu li { 
+    margin-bottom: 15px; 
+}
+
+.mobile-submenu a { 
+    color: #666; 
+    font-size: 11px; 
+    letter-spacing: 1.5px;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE / MEDIA QUERIES (CONTROL TOTAL MÓVIL)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    .nav-desktop, .submenu-horizontal { 
+        display: none !important; 
+    }
+
+    .hamburger { 
+        display: flex !important; 
+    }
+
+    .header-container { 
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 15px 20px !important; 
+        width: 100% !important;
+        height: 70px !important; /* Forzamos barra blanca limpia en celular */
+        background-color: #ffffff !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Ajuste responsivo del tamaño del logo */
+    .logo-container img {
+        height: 35px !important; 
+        max-width: 130px;     /* Más compacto en móviles */
+    }
+    
+    .full-screen {
+        height: 60vh !important; 
+    }
+    
+    .split-row { 
+        display: flex !important;
+        flex-direction: column !important; 
+        height: auto !important;
+    }
+    
+    .col-1-3, .col-2-3 { 
+        width: 100% !important; 
+        height: 40vh !important; 
+    }
+
+    .grid-4 { 
+        display: flex !important;
+        flex-direction: row !important; 
+        flex-wrap: wrap !important;     
+        height: auto !important;
+    }
+    
+    .grid-4 .product-item { 
+        width: 50% !important;          
+        height: 35vh !important;        
+    }
+
+      /* 4. Sección Espejo (Grid-2-Custom) en Móvil */
+    .grid-2-custom {
+        height: auto !important;
+    }
+    .row-product, .row-product.reverse { 
+        display: flex !important;
+        flex-direction: column !important; 
+        height: auto !important;
+    }
+    .product-image, .product-info-card { 
+        width: 100% !important; 
+    }
+    .product-image {
+        height: 45vh !important; 
+    }
+    .product-info-card { 
+        padding: 40px 20px !important; 
+        align-items: center !important; 
+        text-align: center !important;
+    }
+} /* AQUÍ CIERRA CORRECTAMENTE EL BLOQUE @MEDIA DE CELULARES */
+
+/* ==========================================================================
+   7. FORMULARIO DE AUTENTICACIÓN (LOGIN / REGISTRO)
+   ========================================================================= */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f8f8f8;
+}
+
+.auth-box {
+    background: white;
+    padding: 60px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.auth-box h2 {
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.auth-subtitle {
+    font-size: 10px;
+    color: #999;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    background: transparent;
+}
+
+.input-group input:focus {
+    border-bottom: 1px solid #000;
+}
+
+.btn-submit {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    margin-top: 30px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-submit:hover {
+    opacity: 0.8;
+}
+
+.btn-toggle {
+    background: none;
+    border: none;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #666;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   8. ESTRUCTURAS DE SECCIONES DE IMÁGENES (ESCRITORIO BASE)
+   ========================================================================== */
+.full-screen { 
+    height: 100vh; 
+}
+
+.split-row { 
+    display: flex; 
+    width: 100%; 
+    height: 80vh; 
+}
+
+.col-1-3 { 
+    width: 33.33%; 
+}
+
+.col-2-3 { 
+    width: 66.66%; 
+}
+
+/* Grilla del Catálogo General */
+.grid-4 {
+    display: flex;
+    flex-wrap: wrap; /* Asegura el quiebre simétrico de las filas */
+    width: 100%;
+    background-color: #fff;
+}
+
+/* Contenedor individual de cada producto */
+.grid-4 .product-item {
+    position: relative;
+    width: 25%; /* 4 productos por línea exactos */
+    height: 50vh;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.product-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* ==========================================================================
+   9. COMPONENTES INTERACTIVOS DE LAS TARJETAS (CARDS)
+   ========================================================================== */
+.btn-view {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.product-item:hover img {
+    transform: scale(1.05);
+}
+
+.product-item:hover .btn-view {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.btn-view:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* ==========================================================================
+   10. VENTANAS EMERGENTES DINÁMICAS (MODAL)
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95); /* Blanco fluido de alta costura */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    z-index: 2000; /* Por encima de la barra de navegación */
+}
+
+.modal-content {
+    background: white;
+    width: 90%; 
+    max-width: 900px;
+    position: relative;
+    padding: 40px;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px; 
+    right: 20px;
+    background: none; 
+    border: none; 
+    font-size: 30px; 
+    cursor: pointer;
+    color: #000;
+}
+
+.modal-body {
+    display: flex; 
+    gap: 40px;
+}
+
+.modal-image { 
+    width: 50%; 
+    height: 60vh;
+}
+
+.modal-info { 
+    width: 50%; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+}
+
+.modal-info .category { 
+    font-size: 10px; 
+    letter-spacing: 2px; 
+    color: #999; 
+}
+
+.modal-info h2 { 
+    font-weight: 300; 
+    text-transform: uppercase; 
+    margin: 10px 0; 
+    letter-spacing: 3px; 
+}
+
+.modal-info .price { 
+    font-size: 18px; 
+    margin-bottom: 20px; 
+    font-weight: bold;
+}
+
+.modal-info .description { 
+    font-size: 14px; 
+    line-height: 1.6; 
+    color: #666; 
+    margin-bottom: 30px; 
+}
+
+.btn-add-cart {
+    background: #000; 
+    color: #fff; 
+    border: none; 
+    padding: 15px;
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-add-cart:hover {
+    opacity: 0.8;
+}
+
+/* Selectores internos del Modal */
+.modal-section {
+    margin-bottom: 20px;
+}
+
+.section-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.size-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.size-btn {
+    background: transparent;
+    border: 1px solid #ccc;
+    padding: 6px 15px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.size-btn:hover, 
+.size-btn.selected {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+
+
+/*  Sección 4 *****************************************************************************************/
+
+/* ==========================================================================
+   11. SECCIÓN ESPEJO EN ZIGZAG (GRID-2-CUSTOM - ESCRITORIO)
+   ========================================================================== */
+.grid-2-custom {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.row-product {
+    display: flex;
+    height: 70vh;
+    width: 100%;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+/* El truco del espejo */
+.row-product.reverse {
+    flex-direction: row-reverse;
+}
+
+.product-info-card {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 10%;
+    box-sizing: border-box;
+}
+
+.product-image {
+    width: 50%;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Detalles de la tarjeta editorial */
+.brand { 
+    font-size: 10px; 
+    letter-spacing: 3px; 
+    text-transform: uppercase; 
+    color: #999; 
+    margin-bottom: 10px; 
+}
+
+.row-product h2 { 
+    font-weight: 300; 
+    font-size: 28px; 
+    margin: 0 0 15px 0; 
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+}
+
+.price-cop { 
+    font-size: 16px; 
+    color: #000; 
+    margin-bottom: 15px; 
+    font-weight: bold; 
+    letter-spacing: 1px;
+}
+
+.mini-desc { 
+    font-size: 14px; 
+    color: #666; 
+    line-height: 1.6; 
+    margin-bottom: 25px; 
+}
+
+/* Selectores de color en la Card */
+.color-selector {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.color-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.15);
+    transition: transform 0.2s ease;
+}
+
+.color-dot:hover { 
+    transform: scale(1.2); 
+}
+
+/* Botón Ver Producto específico para la sección espejo */
+.row-product .btn-view {
+    position: static; 
+    transform: none;
+    opacity: 1;
+    border: 1px solid #000;
+    background: transparent;
+    padding: 12px 40px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.row-product .btn-view:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* ==========================================================================
+   12. CONTROLES DEL CATÁLOGO (FILTROS / ORDENAMIENTO)
+   ========================================================================== */
+.catalog-controls {
+    display: flex;
+    justify-content: flex-end; 
+    padding: 30px 50px 20px 50px;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-container label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+}
+
+.sort-container select {
+    border: none;
+    border-bottom: 1px solid #ccc; 
+    background: transparent;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-family: inherit;
+    color: #000;
+    cursor: pointer;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: border-color 0.3s;
+}
+
+.sort-container select:focus {
+    border-bottom-color: #000;
+}
+
+/* ==========================================================================
+   13. PIE DE PÁGINA (MAIN FOOTER)
+   ========================================================================== */
+.main-footer {
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 60px 50px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    max-width: 1200px; 
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.footer-section {
+    flex: 1; 
+    display: flex;
+    align-items: center;
+}
+
+/* Distribución simétrica de las 3 columnas del footer */
+.footer-section.links {
+    justify-content: flex-start; 
+}
+
+.footer-section.social-icons {
+    justify-content: center; 
+    gap: 25px; 
+}
+
+.footer-section.languages {
+    justify-content: flex-end; 
+}
+
+.footer-section a { 
+    color: #ccc; 
+    text-decoration: none; 
+    font-size: 11px; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    margin-right: 20px;
+}
+
+.footer-section a:hover { 
+    color: #fff; 
+}
+
+/* Iconos de Redes Sociales */
+.social-icons svg {
+    width: 20px;
+    height: 20px;
+    fill: #ccc;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover svg {
+    fill: #fff;
+    transform: translateY(-2px);
+}
+
+/* Botones de Idioma */
+.languages button {
+    background: transparent;
+    border: 1px solid #444;
+    color: #ccc;
+    cursor: pointer;
+    margin-left: 8px;
+    padding: 6px 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.languages button:hover { 
+    background: #ffffff; 
+    color: #000000;
+    border-color: #ffffff;
+}
+
+/* ==========================================================================
+   14. COMPLEMENTOS RESPONSIVOS ADICIONALES (MÓVIL)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .catalog-controls {
+        padding: 20px;
+        justify-content: center; 
+    }
+
+    .footer-content {
+        flex-direction: column; 
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .footer-section {
+        justify-content: center !important; 
+    }
+    
+    .footer-section a {
+        margin: 0 10px;
+    }
+    
+    .languages button {
+        margin: 0 4px;
+    }
+}
