@@ -25,7 +25,7 @@ class MainHeader extends HTMLElement {
         <header class="navbar">
             <div class="header-container">
                 <div class="logo-container">
-                    <a href="#">
+                    <a href="index.html">
                         <img src="assets/icons/logo.svg" alt="Loto Tigre Logo">
                     </a>
                 </div>
