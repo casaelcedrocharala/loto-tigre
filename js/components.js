@@ -43,10 +43,10 @@ class MainHeader extends HTMLElement {
             <div class="submenu-horizontal" id="submenu">
                 <ul>
                     <li><a href="colecciones/abrigos.html">Abrigos y Chaquetas</a></li>
-                    <li><a href="#">Tops</a></li>
-                    <li><a href="#">Bottoms</a></li>
+                    <li><a href="colecciones/tops.html">Tops</a></li>
+                    <li><a href="colecciones/bottoms.html">Bottoms</a></li>
                     <li><a href="colecciones/accesorios.html">Accesorios</a></li>
-                    <li><a href="#">Todos</a></li>
+                    <li><a href="colecciones/todos.html">Todos</a></li>
                 </ul>
             </div>
             <div class="mobile-drawer" id="mobile-drawer">
