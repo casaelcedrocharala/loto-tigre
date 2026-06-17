@@ -24,7 +24,7 @@ values (
   'Cosmetiquero pop elaborado a mano en ceda fuscia para el verano.',
   array['#FF00FF', '#F014C8'], 
   array['10cm x 10cm x 20cm'],
-  array['/assets/images/img1-600-800.png'] 
+  array['assets/images/img1-600-800.png'] 
 );
 
 -- 3. Activar el sistema de seguridad (Row Level Security)
