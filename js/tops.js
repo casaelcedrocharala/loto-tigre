@@ -10,7 +10,7 @@ async function cargarTops() {
     const { data: productos, error } = await _supabase
         .from('productos')
         .select('*')
-        .eq('categoria', 'tops');
+        .eq('categoria', 'camisas');
 
     if (error) {
         console.error('Error conectando a Supabase:', error.message);
