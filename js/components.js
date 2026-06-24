@@ -46,7 +46,7 @@ class MainHeader extends HTMLElement {
                     <li><a href="colecciones/tops.html">Tops</a></li>
                     <li><a href="colecciones/bottoms.html">Bottoms</a></li>
                     <li><a href="colecciones/accesorios.html">Accesorios</a></li>
-                    <li><a href="colecciones/todos.html">Todos</a></li>
+                    <!--<li><a href="colecciones/todos.html">Todos</a></li>-->
                 </ul>
             </div>
             <div class="mobile-drawer" id="mobile-drawer">
@@ -54,11 +54,11 @@ class MainHeader extends HTMLElement {
                     <li>
                         <div class="mobile-collapse-btn">Colecciones <span>+</span></div>
                         <ul class="mobile-submenu">
-                            <li><a href="#">Abrigos y Chaquetas</a></li>
-                            <li><a href="#">Tops</a></li>
-                            <li><a href="#">Bottoms</a></li>
-                            <li><a href="#">Accesorios</a></li>
-                            <li><a href="#">Todos</a></li>
+                        <li><a href="colecciones/abrigos.html">Abrigos y Chaquetas</a></li>
+                        <li><a href="colecciones/tops.html">Tops</a></li>
+                        <li><a href="colecciones/bottoms.html">Bottoms</a></li>
+                        <li><a href="colecciones/accesorios.html">Accesorios</a></li>
+                        <!--<li><a href="colecciones/todos.html">Todos</a></li>-->
                         </ul>
                     </li>
                     <li><a href="#">Líneas de Diseño</a></li>
