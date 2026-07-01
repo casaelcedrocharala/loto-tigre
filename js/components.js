@@ -32,8 +32,8 @@ class MainHeader extends HTMLElement {
                 <nav class="nav-desktop">
                     <ul>
                         <li><a href="#" id="btn-colecciones">Colecciones</a></li>
-                        <li><a href="#">Líneas de Diseño</a></li>
-                        <li><a href="#">Sobre la Marca</a></li>
+                    <!--<li><a href="#">Líneas de Diseño</a></li>               -->
+                        <li><a href="nosotros.html">Sobre la Marca</a></li>
                     </ul>
                 </nav>
                 <button class="hamburger" id="hamburger">
@@ -58,7 +58,7 @@ class MainHeader extends HTMLElement {
                         <li><a href="colecciones/tops.html">Tops</a></li>
                         <li><a href="colecciones/bottoms.html">Bottoms</a></li>
                         <li><a href="colecciones/accesorios.html">Accesorios</a></li>
-                        <!--<li><a href="colecciones/todos.html">Todos</a></li>-->
+                    <!--<li><a href="colecciones/todos.html">Todos</a></li>-->
                         </ul>
                     </li>
                     <li><a href="#">Líneas de Diseño</a></li>
